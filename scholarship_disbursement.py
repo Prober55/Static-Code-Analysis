@@ -1,4 +1,3 @@
-import os
 import sqlite3
 
 conn = sqlite3.connect(":memory:")
@@ -27,10 +26,7 @@ def disburse(award_id):
 
 
 def archive():
-    try:
-        print("archiving awards")
-    except Exception:
-        pass
+    print("archiving awards")
 
 
 def bySchemeCount(scheme):
