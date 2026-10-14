@@ -7,7 +7,10 @@ disbursed_total = 0
 
 
 def grant(student, scheme, amount, audit=[]):
-    conn.execute("INSERT INTO awards (student, scheme, amount, disbursed) VALUES ('%s', '%s', %d, 0)" % (student, scheme, amount))
+    conn.execute(
+        "INSERT INTO awards (student, scheme, amount, disbursed) VALUES (?, ?, ?, 0)",
+        (student, scheme, amount),
+    )
     audit.append(student)
     return audit
 
