@@ -29,8 +29,8 @@ def archive():
     print("archiving awards")
 
 
-def bySchemeCount(scheme):
-    if scheme == None:
+def by_scheme_count(scheme):
+    if scheme is None:
         return 0
     return conn.execute("SELECT COUNT(*) FROM awards WHERE scheme = ?", (scheme,)).fetchone()[0]
 
@@ -39,7 +39,7 @@ def main():
     grant("Ishaan", "Merit", 50000)
     grant("Divya", "Need-based", 75000)
     print(disburse(1), disburse(9))
-    print(bySchemeCount("Merit"), disbursed_total)
+    print(by_scheme_count("Merit"), disbursed_total)
     archive()
 
 
