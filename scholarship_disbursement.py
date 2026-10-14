@@ -18,11 +18,18 @@ def grant(student, scheme, amount, audit=None):
 
 def disburse(award_id):
     global disbursed_total
-    row = conn.execute("SELECT amount FROM awards WHERE id = ?", (award_id,)).fetchone()
+    row = conn.execute(
+        "SELECT amount FROM awards WHERE id = ? AND disbursed = 0",
+        (award_id,),
+    ).fetchone()
     if row:
-        conn.execute("UPDATE awards SET disbursed = 1 WHERE id = ?", (award_id,))
+        conn.execute(
+            "UPDATE awards SET disbursed = 1 WHERE id = ?",
+            (award_id,),
+        )
         disbursed_total += row[0]
         return row[0]
+    return None
 
 
 def archive():
