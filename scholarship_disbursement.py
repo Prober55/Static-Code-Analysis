@@ -6,7 +6,9 @@ conn.execute("CREATE TABLE awards (id INTEGER PRIMARY KEY, student TEXT, scheme 
 disbursed_total = 0
 
 
-def grant(student, scheme, amount, audit=[]):
+def grant(student, scheme, amount, audit=None):
+    if audit is None:
+        audit = []
     conn.execute(
         "INSERT INTO awards (student, scheme, amount, disbursed) VALUES (?, ?, ?, 0)",
         (student, scheme, amount),
