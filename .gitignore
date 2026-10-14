@@ -21,3 +21,7 @@ Thumbs.db
 # Reports / Temporary databases if needed (keep tracked reports, ignore local db artifacts)
 *.sqlite3
 *.db
+
+# Temporary office / editor files
+~$*
+
